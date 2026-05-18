@@ -14,12 +14,16 @@ npm run preview  # preview production build
 
 ## Architecture
 
-Single-page React app (Vite + React 19). All application logic lives in `src/App.jsx` — there are no sub-components, no routing, and no external state library.
+Single-page React app (Vite + React 19). No routing, no external state library.
 
-**Data model:** transactions are held in a single `useState` array. Each transaction has `{ id, description, amount, type, category, date }`. `amount` is stored as a string (not a number), which causes the income/expense summary totals to concatenate instead of add — a known intentional bug introduced for the course.
+**Component tree:**
+- `App` — holds the `transactions` array in state and an `handleAdd` callback; renders the three children below
+  - `Summary` — receives `transactions`, computes `totalIncome`, `totalExpenses`, and `balance` internally
+  - `TransactionForm` — owns its own form field state (`description`, `amount`, `type`, `category`); calls `onAdd` with a fully-formed transaction object on submit
+  - `TransactionList` — receives `transactions`, owns its own `filterType` / `filterCategory` state, derives the filtered list internally
 
-**Categories** are a hardcoded array in `App.jsx`: `["food", "housing", "utilities", "transport", "entertainment", "salary", "other"]`.
+**Data model:** each transaction has `{ id, description, amount, type, category, date }` where `amount` is a number. New transactions added via the form are parsed with `parseFloat`.
 
-**Filtering** is done inline in the render: `filteredTransactions` is derived from the `transactions` array by applying `filterType` and `filterCategory` state values.
+**Categories** are a hardcoded constant array duplicated in `TransactionForm` and `TransactionList`: `["food", "housing", "utilities", "transport", "entertainment", "salary", "other"]`.
 
 There is no persistence layer — data resets on page reload.
