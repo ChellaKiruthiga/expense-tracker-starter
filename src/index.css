@@ -1,3 +1,23 @@
+:root {
+  --bg: #0b0d12;
+  --surface: #12151e;
+  --surface-2: #181c28;
+  --surface-3: #1e2333;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.13);
+  --text-primary: #e8e3d8;
+  --text-secondary: #7a8799;
+  --text-muted: #3e4a5c;
+  --income: #4dd98a;
+  --income-bg: rgba(77, 217, 138, 0.1);
+  --expense: #f07272;
+  --expense-bg: rgba(240, 114, 114, 0.1);
+  --gold: #c9a84c;
+  --gold-bg: rgba(201, 168, 76, 0.1);
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +25,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

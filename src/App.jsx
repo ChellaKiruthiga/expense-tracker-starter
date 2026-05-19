@@ -25,10 +25,17 @@ function App() {
     setTransactions(transactions.filter(t => t.id !== id));
   };
 
+  const dateLabel = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
   return (
     <div className="app">
-      <h1>Finance Tracker</h1>
-      <p className="subtitle">Track your income and expenses</p>
+      <header className="app-header">
+        <div className="app-header-left">
+          <h1>Ledger</h1>
+          <p className="subtitle">Personal finance tracker</p>
+        </div>
+        <span className="current-date">{dateLabel}</span>
+      </header>
 
       <Summary transactions={transactions} />
       <SpendingChart transactions={transactions} />
