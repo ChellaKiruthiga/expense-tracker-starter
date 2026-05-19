@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
+import { categories } from './constants'
 
 function TransactionForm({ onAdd }) {
   const [description, setDescription] = useState("");

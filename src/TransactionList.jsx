@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
+import { CATcategoriesEGORIES } from './constants'
 
 const formatDate = (dateStr) => {
   const d = new Date(dateStr + 'T00:00:00');
